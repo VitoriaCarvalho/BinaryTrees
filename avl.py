@@ -1,4 +1,4 @@
-class No:
+class NodeAVL:
     def __init__(self, data):
         self.data = data
         self.setaFilhos(None, None)
@@ -58,17 +58,17 @@ class No:
             else:
                 self.rotacaoDireitaEsquerda()
 
-    def insere(self, data):
+    def add(self, data):
         if data <= self.data:
             if not self.esquerda:
-                self.esquerda = No(data)
+                self.esquerda = NodeAVL(data)
             else:
-                self.esquerda.insere(data)
+                self.esquerda.add(data)
         else:
             if not self.direita:
-                self.direita = No(data)
+                self.direita = NodeAVL(data)
             else:
-                self.direita.insere(data)
+                self.direita.add(data)
         self.executaBalanco()
 
     def imprimeArvore(self, indent = 0):
@@ -80,13 +80,12 @@ class No:
             self.direita.imprimeArvore(indent + 2)
 
 # Use the insert method to add nodes
-'''
-root = No(10)
-root.insere(3)
-root.insere(7)
-root.insere(4)
-root.insere(20)
-root.insere(15)
+
+root = NodeAVL()
+root.add(3)
+root.add(7)
+root.add(4)
+root.add(20)
+root.add(15)
 
 root.imprimeArvore()
-'''

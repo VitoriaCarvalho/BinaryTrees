@@ -1,4 +1,4 @@
-class Node:
+class NodeBST:
 
     def __init__(self, data):
 
@@ -6,19 +6,19 @@ class Node:
         self.right = None
         self.data = data
 
-    def insert(self, data):
-# Compare the new value with the parent node
+    def add(self, data):
+# Compare the new value with the parent NodeBST
         if self.data:
             if data < self.data:
                 if self.left is None:
-                    self.left = Node(data)
+                    self.left = NodeBST(data)
                 else:
-                    self.left.insert(data)
+                    self.left.add(data)
             elif data > self.data:
                 if self.right is None:
-                    self.right = Node(data)
+                    self.right = NodeBST(data)
                 else:
-                    self.right.insert(data)
+                    self.right.add(data)
         else:
             self.data = data
 
@@ -26,18 +26,18 @@ class Node:
     def PrintTree(self):
         if self.left:
             self.left.PrintTree()
-        print( self.data),
+        print(self.data),
         if self.right:
             self.right.PrintTree()
 
-# Use the insert method to add nodes
+# Use the add method to add NodeBSTs
 '''
-root = Node(10)
-root.insert(3)
-root.insert(7)
-root.insert(4)
-root.insert(20)
-root.insert(15)
+root = NodeBST(10)
+root.add(3)
+root.add(7)
+root.add(4)
+root.add(20)
+root.add(15)
 
 root.PrintTree()
 '''

@@ -283,6 +283,12 @@ class RedBlackTree:
           x = self.root
     x.color = Node.BLACK
     
+  def PrintTree(self):
+    if self.left:
+      self.left.PrintTree()
+    print(self.data),
+    if self.right:
+      self.right.PrintTree()
   
 '''
 if __name__ == "__main__":
@@ -299,7 +305,7 @@ if __name__ == "__main__":
   for key in tree.inorder_walk():
     print("key = %s" % key)
 '''
-'''
+
 tree = RedBlackTree()
 tree.add(10)
 tree.add(3)
@@ -308,6 +314,8 @@ tree.add(4)
 tree.add(20)
 tree.add(15)
 
+tree.PrintTree()
+'''
 for key in tree.inorder_walk():
     print(key)
 '''
