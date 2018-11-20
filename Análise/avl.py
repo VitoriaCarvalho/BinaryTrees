@@ -1,3 +1,7 @@
+import sys
+
+numNode = 0
+
 class NodeAVL:
     def __init__(self, data):
         self.data = data
@@ -59,28 +63,43 @@ class NodeAVL:
                 self.rotacaoDireitaEsquerda()
 
     def add(self, data):
+        global numNode
         if data <= self.data:
             if not self.esquerda:
+                numNode += 1
                 self.esquerda = NodeAVL(data)
             else:
+                numNode += 1
                 self.esquerda.add(data)
         else:
             if not self.direita:
+                numNode += 1
                 self.direita = NodeAVL(data)
             else:
+                numNode += 1
                 self.direita.add(data)
         self.executaBalanco()
 
-    def imprimeArvore(self, indent = 0):
-        # print (" " * indent+ str(self.data))
-        if self.esquerda:
-            self.esquerda.imprimeArvore(indent + 2)
-        print (self.data, " ")
-        if self.direita:
-            self.direita.imprimeArvore(indent + 2)
+    # def PrintTree(self, indent = 0):
+    #     # print (" " * indent+ str(self.data))
+    #     if self.esquerda:
+    #         self.esquerda.PrintTree(indent + 2)
+    #     #print (self.data, " ")
+    #     sys.stdout.write(str(self.data) + " ")
+    #     if self.direita:
+    #         self.direita.PrintTree(indent + 2)
+    def PrintTree(self):
+        # if self.esquerda:
+        #     self.esquerda.PrintTree()
+        # #print(self.data),
+        # sys.stdout.write(str(self.data) + " ")
+        # if self.direita:
+        #     self.direita.PrintTree()
+        print(numNode)
+        numNode = 0
 
 # Use the insert method to add nodes
-
+'''
 root = NodeAVL()
 root.add(3)
 root.add(7)
@@ -88,4 +107,5 @@ root.add(4)
 root.add(20)
 root.add(15)
 
-root.imprimeArvore()
+root.PrintTree()
+'''

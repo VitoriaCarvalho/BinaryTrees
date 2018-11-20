@@ -1,3 +1,7 @@
+import sys
+
+numNode = 0
+
 class Node:
   RED = True
   BLACK = False
@@ -219,11 +223,14 @@ class RedBlackTree:
   def __insert_helper(self, z):
     y = NilNode.instance()
     x = self.root
+    global numNode
     while x:
       y = x
       if z.key < x.key:
+        numNode += 1
         x = x.left
       else:
+        numNode += 1
         x = x.right
     
     z.parent = y
@@ -284,11 +291,11 @@ class RedBlackTree:
     x.color = Node.BLACK
     
   def PrintTree(self):
-    if self.left:
-      self.left.PrintTree()
-    print(self.data),
-    if self.right:
-      self.right.PrintTree()
+    # for key in self.inorder_walk():
+    #   sys.stdout.write(str(key) + " ")
+    global numNode
+    print(numNode)
+    numNode = 0
   
 '''
 if __name__ == "__main__":
@@ -305,7 +312,7 @@ if __name__ == "__main__":
   for key in tree.inorder_walk():
     print("key = %s" % key)
 '''
-
+'''
 tree = RedBlackTree()
 tree.add(10)
 tree.add(3)
@@ -315,6 +322,7 @@ tree.add(20)
 tree.add(15)
 
 tree.PrintTree()
+'''
 '''
 for key in tree.inorder_walk():
     print(key)
